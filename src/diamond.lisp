@@ -16,16 +16,23 @@
 (defun pattern (left index right)
   (append (spaces left) (list (index-to-letter index)) (spaces right)))
 
+(defun patterns-aux (index max-index)
+    (if (> index max-index)
+      ()
+      (let* ((left (- max-index index))
+             (right (- max-index left)))
+        (cons (pattern left index right)
+              (patterns-aux (1+ index) max-index)))))
+
+(defun patterns (index)
+   (patterns-aux 0 index))
+
   (defun diagonal (letter)
     (cond ((equal 'A letter)
-           (list (pattern 0 0 0)))
+           (patterns 0))
           ((equal 'B letter)
-           (list (pattern 1 0 0)
-                 (pattern 0 1 1)))
-          (T (list (pattern 2 0 0)
-                   (pattern 1 1 1)
-                   (pattern 0 2 2)))))
-
+           (patterns 1))
+          (T (patterns 2))))
 
 (defun diamond (letter)
   (mirror (mapcar #'mirror (diagonal letter))))
