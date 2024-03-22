@@ -13,4 +13,4 @@
              (#\SPACE \#SPACE #\A #\SPACE #\SPACE)))))
 
 (defun print-diamond (lines)
-    (format nil "A~%"))
+    (format nil "~A~%" (car lines)))
