@@ -5,7 +5,7 @@
 (load "src/diamond")
 
 (define-test smallest-diamond-is-A
-    (assert-equal '((#\A)) (diamond 'A)))
+    (assert-equal (format nil "A~%") (print-diamond (diamond 'A))))
 
 (define-test diamond-B-is-3-by-3-A-B-B-A
     (assert-equal '((#\SPACE #\A #\SPACE)
