@@ -14,11 +14,11 @@
                   (diamond 'B)))
 
 (define-test diamond-C-is-5-by-5-A-B-B-C-C-B-B-A
-    (assert-equal '((#\SPACE \#SPACE #\A #\SPACE #\SPACE)
-                    (#\SPACE \#B #\SPACE #\B #\SPACE)
+    (assert-equal '((#\SPACE #\SPACE #\A #\SPACE #\SPACE)
+                    (#\SPACE #\B #\SPACE #\B #\SPACE)
                     (#\C #\SPACE #\SPACE #\SPACE #\C)
-                    (#\SPACE \#B #\SPACE #\B #\SPACE)
-                    (#\SPACE \#SPACE #\A #\SPACE #\SPACE))
+                    (#\SPACE #\B #\SPACE #\B #\SPACE)
+                    (#\SPACE #\SPACE #\A #\SPACE #\SPACE))
                   (diamond 'C)))
 
 (run-tests :all)

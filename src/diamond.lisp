@@ -1,15 +1,17 @@
 
-(defun mirror (lines)
-  (append lines (cdr (reverse lines))))
+(defun mirror (xs)
+  (append xs (cdr (reverse xs))))
 
 (defun diamond (letter)
   (mirror (cond ((equal 'A letter)
                  '((#\A)))
                 ((equal 'B letter)
-                 '((#\SPACE #\A #\SPACE)
-                           (#\B #\SPACE #\B)))
-                (T '((#\SPACE \#SPACE #\A #\SPACE #\SPACE)
-                     (#\SPACE \#B #\SPACE #\B #\SPACE)
-                     (#\C #\SPACE #\SPACE #\SPACE #\C))))))
+                 (mapcar #'mirror
+                         '((#\SPACE #\A)
+                           (#\B #\SPACE))))
+                (T (mapcar #'mirror
+                           '((#\SPACE #\SPACE #\A)
+                             (#\SPACE #\B #\SPACE)
+                             (#\C #\SPACE #\SPACE)))))))
 
 
