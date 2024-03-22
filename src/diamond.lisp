@@ -8,9 +8,7 @@
       (cons #\SPACE (spaces (1- n)))))
 
 (defun index-to-letter (index)
-  (cond ((eql 0 index) #\A)
-        ((eql 1 index) #\B)
-        (T #\C)))
+  (code-char (+ index 65)))
 
 
 (defun pattern (left index right)
