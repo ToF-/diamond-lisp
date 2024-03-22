@@ -24,15 +24,14 @@
         (cons (pattern left index right)
               (patterns-aux (1+ index) max-index)))))
 
+(defun letter-to-index (letter)
+  (- (char-code (car (coerce (string letter) 'list))) 65))
+
 (defun patterns (index)
    (patterns-aux 0 index))
 
-  (defun diagonal (letter)
-    (cond ((equal 'A letter)
-           (patterns 0))
-          ((equal 'B letter)
-           (patterns 1))
-          (T (patterns 2))))
+(defun diagonal (letter)
+  (patterns (letter-to-index letter)))
 
 (defun diamond (letter)
   (mirror (mapcar #'mirror (diagonal letter))))
