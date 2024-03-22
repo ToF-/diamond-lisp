@@ -7,18 +7,24 @@
       ()
       (cons #\SPACE (spaces (1- n)))))
 
-(defun pattern (left letter right)
-    (append (spaces left) (list letter) (spaces right)))
+(defun index-to-letter (index)
+  (cond ((eql 0 index) #\A)
+        ((eql 1 index) #\B)
+        (T #\C)))
 
-(defun diagonal (letter)
-  (cond ((equal 'A letter)
-         (list (pattern 0 #\A 0)))
-        ((equal 'B letter)
-         (list (pattern 1 #\A 0)
-               (pattern 0 #\B 1)))
-        (T (list (pattern 2 #\A 0)
-                 (pattern 1 #\B 1)
-                 (pattern 0 #\C 2)))))
+
+(defun pattern (left index right)
+  (append (spaces left) (list (index-to-letter index)) (spaces right)))
+
+  (defun diagonal (letter)
+    (cond ((equal 'A letter)
+           (list (pattern 0 0 0)))
+          ((equal 'B letter)
+           (list (pattern 1 0 0)
+                 (pattern 0 1 1)))
+          (T (list (pattern 2 0 0)
+                   (pattern 1 1 1)
+                   (pattern 0 2 2)))))
 
 
 (defun diamond (letter)
