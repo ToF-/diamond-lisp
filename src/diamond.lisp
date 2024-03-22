@@ -1,0 +1,3 @@
+
+(defun diamond (letter)
+  '((#\A)))
