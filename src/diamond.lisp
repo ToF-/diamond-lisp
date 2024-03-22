@@ -12,10 +12,10 @@
 
 (defun diagonal (letter)
   (cond ((equal 'A letter)
-         '((#\A)))
+         (list (pattern 0 #\A 0)))
         ((equal 'B letter)
-         '((#\SPACE #\A)
-           (#\B #\SPACE)))
+         (list (pattern 1 #\A 0)
+               (pattern 0 #\B 1)))
         (T (list (pattern 2 #\A 0)
                  (pattern 1 #\B 1)
                  (pattern 0 #\C 2)))))
