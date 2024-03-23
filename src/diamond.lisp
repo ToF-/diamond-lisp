@@ -33,3 +33,9 @@
 
 (defun diamond (letter)
   (mirror (mapcar #'mirror (diagonal letter))))
+
+(defun pretty-print (diamond)
+  (coerce (apply 'concatenate 'list
+                 (mapcar (lambda (line)
+                           (append line (list #\NEWLINE)))
+                         diamond)) 'string))

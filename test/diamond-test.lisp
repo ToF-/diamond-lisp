@@ -21,5 +21,11 @@
                     (#\SPACE #\SPACE #\A #\SPACE #\SPACE))
                   (diamond 'C)))
 
+(define-test pretty-print-diamond
+   (assert-equal (coerce  '(#\SPACE #\A #\SPACE #\NEWLINE
+                            #\B #\SPACE #\B #\NEWLINE
+                            #\SPACE #\A #\SPACE #\NEWLINE) 'string)
+                 (coerce (pretty-print (diamond 'B)) 'string)))
+
 (run-tests :all)
 (sb-ext:quit)
